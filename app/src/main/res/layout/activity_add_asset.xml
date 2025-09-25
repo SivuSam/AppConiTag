@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/back_purpleb"
     android:padding="16dp">
 
     <LinearLayout
@@ -48,15 +48,15 @@
 
                 android:drawablePadding="8dp"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:padding="12dp"/>
 
             <Button
                 android:id="@+id/scanAssetTagButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scan"
+                android:text="Scan QR"
                 android:backgroundTint="@color/black"
 
                 android:textColor="@color/white"
@@ -71,8 +71,8 @@
 
             android:drawablePadding="8dp"
             android:background="#30ffffff"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:padding="12dp"
             android:layout_marginBottom="8dp"/>
 
@@ -84,8 +84,8 @@
 
             android:drawablePadding="8dp"
             android:background="#30ffffff"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:padding="12dp"
             android:layout_marginBottom="8dp"/>
 
@@ -97,8 +97,8 @@
 
             android:drawablePadding="8dp"
             android:background="#30ffffff"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:padding="12dp"
             android:layout_marginBottom="8dp"/>
 
@@ -110,8 +110,8 @@
 
             android:drawablePadding="8dp"
             android:background="#30ffffff"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:padding="12dp"
             android:layout_marginBottom="8dp"/>
 
@@ -123,8 +123,8 @@
 
             android:drawablePadding="8dp"
             android:background="#30ffffff"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:padding="12dp"
             android:layout_marginBottom="14dp"/>
 

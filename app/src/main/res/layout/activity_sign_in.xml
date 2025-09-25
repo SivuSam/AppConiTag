@@ -8,14 +8,25 @@
     tools:context=".SignIn">
 
     <TextView
+        android:id="@+id/conitag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ConiTag"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        />
+    <TextView
         android:id="@+id/signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="WELCOME BACK"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="50dp"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:layout_marginTop="150dp"
         android:gravity="center"/>
 
     <EditText
@@ -63,7 +74,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="Login"
-        android:background="#003366"
+
+        android:backgroundTint="@color/black"
 
         android:textColor="#FFFFFF"/>
 
@@ -75,9 +87,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="#003366"
+       android:backgroundTint="@color/black"
         android:text="Register"
-        android:textColor="#000000"/>
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/forgotpass"

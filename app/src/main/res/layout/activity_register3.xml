@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/back_purpleb"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SignUp">
 
@@ -35,8 +35,8 @@
                 android:hint="Username"
                 android:inputType="textPersonName"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_person_outline_24"
                 android:drawablePadding="20dp"
                 android:padding="16dp"
@@ -49,8 +49,8 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_info_24"
                 android:drawablePadding="20dp"
                 android:padding="16dp"
@@ -63,8 +63,8 @@
                 android:hint="Full Name"
                 android:inputType="textPersonName"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_person_outline_24"
                 android:drawablePadding="20dp"
                 android:padding="16dp"
@@ -77,8 +77,8 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
 
                 android:drawablePadding="20dp"
                 android:padding="16dp"
@@ -101,8 +101,8 @@
                 android:hint="Status"
                 android:inputType="text"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:padding="16dp"
                 android:layout_marginBottom="8dp"/>
 
@@ -113,8 +113,8 @@
                 android:hint="Staff Number"
                 android:inputType="number"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:padding="16dp"
                 android:layout_marginBottom="8dp"/>
 
@@ -125,8 +125,8 @@
                 android:hint="Student Number"
                 android:inputType="number"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:padding="16dp"
                 android:layout_marginBottom="8dp"/>
 
@@ -137,8 +137,8 @@
                 android:hint="SA ID"
                 android:inputType="text"
                 android:background="#30ffffff"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:padding="16dp"
                 android:layout_marginBottom="8dp"/>
 
