@@ -1,12 +1,20 @@
 package com.example.appconitag;
 
 import android.content.Context;
-import android.view.*;
-import android.widget.*;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.File;
 import java.util.List;
 
 public class AssetAdapter extends ArrayAdapter<AssetAdapter.Asset> {
@@ -40,8 +48,22 @@ public class AssetAdapter extends ArrayAdapter<AssetAdapter.Asset> {
         assetLocation.setText("Location: " + asset.location);
         assetNotes.setText("Notes: " + asset.notes);
 
-        // Placeholder image (you can load real image if available)
-        assetImage.setImageResource(R.drawable.ic_launcher_foreground);
+        // Load image if available
+        if (asset.imagePath != null && !asset.imagePath.isEmpty()) {
+            File imgFile = new File(asset.imagePath);
+            if (imgFile.exists()) {
+                Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                if (bitmap != null) {
+                    assetImage.setImageBitmap(bitmap);
+                } else {
+                    assetImage.setImageResource(R.drawable.ic_launcher_foreground);
+                }
+            } else {
+                assetImage.setImageResource(R.drawable.ic_launcher_foreground);
+            }
+        } else {
+            assetImage.setImageResource(R.drawable.ic_launcher_foreground);
+        }
 
         return convertView;
     }
@@ -50,9 +72,10 @@ public class AssetAdapter extends ArrayAdapter<AssetAdapter.Asset> {
     public static class Asset {
         public int assetId;
         public String assetTag, assetName, room, condition, location, notes;
+        public String imagePath;
 
         public Asset(int assetId, String assetTag, String assetName, String room,
-                     String condition, String location, String notes) {
+                     String condition, String location, String notes, String imagePath) {
             this.assetId = assetId;
             this.assetTag = assetTag;
             this.assetName = assetName;
@@ -60,6 +83,7 @@ public class AssetAdapter extends ArrayAdapter<AssetAdapter.Asset> {
             this.condition = condition;
             this.location = location;
             this.notes = notes;
+            this.imagePath = imagePath;
         }
     }
 }

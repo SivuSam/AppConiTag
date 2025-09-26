@@ -1,6 +1,7 @@
 package com.example.appconitag;
 
 import android.content.Intent;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -115,6 +117,10 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray items = jsonResponse.getJSONArray("items");
                 assetList.clear();
 
+                // Get the assets directory and list all image files
+                File assetsDir = new File(getFilesDir(), "assets");
+                File[] imageFiles = assetsDir.exists() ? assetsDir.listFiles() : new File[0];
+
                 for (int i = 0; i < items.length(); i++) {
                     JSONObject asset = items.getJSONObject(i);
 
@@ -126,6 +132,9 @@ public class MainActivity extends AppCompatActivity {
                     String location = asset.getString("location");
                     String notes = asset.getString("notes");
 
+                    // Find matching image file for this asset
+                    String imagePath = findMatchingImage(assetName, assetTag, imageFiles);
+
                     AssetAdapter.Asset newAsset = new AssetAdapter.Asset(
                             assetId,
                             assetTag,
@@ -133,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
                             room,
                             condition,
                             location,
-                            notes
+                            notes,
+                            imagePath
                     );
                     assetList.add(newAsset);
                 }
@@ -142,6 +152,22 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 Log.e(TAG, "Exception in parsing JSON: " + e.getMessage());
             }
+        }
+
+        // Helper method to find image file that matches asset name or tag
+        private String findMatchingImage(String assetName, String assetTag, File[] imageFiles) {
+            if (imageFiles == null || imageFiles.length == 0) return "";
+
+            String searchName = assetName.toLowerCase().replace(" ", "_");
+            String searchTag = assetTag.toLowerCase();
+
+            for (File file : imageFiles) {
+                String filename = file.getName().toLowerCase();
+                if (filename.contains(searchName) || filename.contains(searchTag)) {
+                    return file.getAbsolutePath();
+                }
+            }
+            return "";
         }
     }
 }

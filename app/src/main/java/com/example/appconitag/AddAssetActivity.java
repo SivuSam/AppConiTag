@@ -42,6 +42,8 @@ public class AddAssetActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1001;
     private static final int CAMERA_PERMISSION_CODE = 200;
 
+    private String currentImagePath = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +83,6 @@ public class AddAssetActivity extends AppCompatActivity {
             }
         });
 
-
         // Submit asset
         submitButton.setOnClickListener(v -> {
             String assetTag = assetTagEditText.getText().toString().trim();
@@ -97,7 +98,7 @@ public class AddAssetActivity extends AppCompatActivity {
                 return;
             }
 
-            new PostAssetTask().execute(assetTag, assetName, room, condition, location, notes, "N");
+            new PostAssetTask().execute(assetTag, assetName, room, condition, location, notes, "N", currentImagePath);
         });
     }
 
@@ -135,8 +136,9 @@ public class AddAssetActivity extends AppCompatActivity {
             Bitmap bitmap = (Bitmap) extras.get("data");
             if (bitmap != null) {
                 String assetName = assetNameEditText.getText().toString().trim();
+                String assetTag = assetTagEditText.getText().toString().trim();
                 if (assetName.isEmpty()) assetName = "asset";
-                saveImage(bitmap, assetName);
+                saveImage(bitmap, assetName, assetTag);
             }
         }
 
@@ -152,10 +154,10 @@ public class AddAssetActivity extends AppCompatActivity {
     }
 
     // Save image to internal app storage
-    private void saveImage(Bitmap bitmap, String assetName) {
+    private void saveImage(Bitmap bitmap, String assetName, String assetTag) {
         try {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-            String fileName = assetName + "_" + timeStamp + ".jpg";
+            String fileName = assetName + "_" + (assetTag.isEmpty() ? "" : assetTag + "_") + timeStamp + ".jpg";
             File dir = new File(getFilesDir(), "assets");
             if (!dir.exists()) dir.mkdirs();
             File file = new File(dir, fileName);
@@ -163,6 +165,7 @@ public class AddAssetActivity extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
             fos.close();
+            currentImagePath = file.getAbsolutePath();
             Toast.makeText(this, "Image saved: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -181,6 +184,7 @@ public class AddAssetActivity extends AppCompatActivity {
             String location = (String) params[4];
             String notes = (String) params[5];
             String verified = (String) params[6];
+            String imagePath = (String) params[7];
 
             try {
                 URL url = new URL(POST_ASSET_URL);
@@ -197,7 +201,8 @@ public class AddAssetActivity extends AppCompatActivity {
                 jsonObject.put("location", location);
                 jsonObject.put("notes", notes);
                 jsonObject.put("verified", verified);
-                jsonObject.put("submitted_by", 1); // always 1
+                jsonObject.put("submitted_by", 1);
+                jsonObject.put("image_path", imagePath);
 
                 OutputStream os = conn.getOutputStream();
                 os.write(jsonObject.toString().getBytes("UTF-8"));
@@ -229,4 +234,5 @@ public class AddAssetActivity extends AppCompatActivity {
         }
     }
 }
+
 
