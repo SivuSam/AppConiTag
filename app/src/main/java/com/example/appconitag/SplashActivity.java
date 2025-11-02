@@ -15,9 +15,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Optional: find views if you want to manipulate them
-        // TextView welcomeText = findViewById(R.id.welcomeText);
-        // ProgressBar progressBar = findViewById(R.id.progressBar);
+
 
         // Delay for 2 seconds then navigate to SignInActivity
         new Handler().postDelayed(new Runnable() {
